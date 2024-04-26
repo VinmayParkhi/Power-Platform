@@ -1,0 +1,83 @@
+{
+  "properties": {
+    "connectionReferences": {
+      "shared_uiflow_1": {
+        "runtimeSource": "invoker",
+        "connection": {
+          "connectionReferenceLogicalName": "new_shareduiflow_49533"
+        },
+        "api": {
+          "name": "shared_uiflow"
+        }
+      }
+    },
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "$connections": {
+          "defaultValue": {},
+          "type": "Object"
+        },
+        "$authentication": {
+          "defaultValue": {},
+          "type": "SecureObject"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "metadata": {
+            "operationMetadataId": "160b35c4-1645-4f4c-a7db-fecacb5bcb0d"
+          },
+          "type": "Request",
+          "kind": "PowerApp",
+          "inputs": {
+            "schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          }
+        }
+      },
+      "actions": {
+        "Run_a_flow_built_with_Power_Automate_for_desktop": {
+          "runAfter": {
+            "Compose": [
+              "Succeeded"
+            ]
+          },
+          "metadata": {
+            "operationMetadataId": "80cbe1cc-5f7a-4d7b-aadf-40b03b3fefef"
+          },
+          "type": "OpenApiConnection",
+          "inputs": {
+            "host": {
+              "connectionName": "shared_uiflow_1",
+              "operationId": "RunUIFlow_V2",
+              "apiId": "/providers/Microsoft.PowerApps/apis/shared_uiflow"
+            },
+            "parameters": {
+              "uiFlowId": "c6bb7f7d-a951-404c-b4f1-55542e05b529",
+              "runMode": "attended"
+            },
+            "authentication": {
+              "value": "@json(decodeBase64(triggerOutputs().headers['X-MS-APIM-Tokens']))['$ConnectionKey']",
+              "type": "Raw"
+            }
+          }
+        },
+        "Compose": {
+          "runAfter": {},
+          "metadata": {
+            "operationMetadataId": "f855925b-08c3-4f54-9c3f-bdd82cf3d5d2"
+          },
+          "type": "Compose",
+          "inputs": "hello team"
+        }
+      }
+    },
+    "templateName": ""
+  },
+  "schemaVersion": "1.0.0.0"
+}

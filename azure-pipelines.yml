@@ -1,0 +1,45 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- VPARKHI
+
+pool:
+  vmImage: windows-2019
+
+steps:
+- task: PowerPlatformToolInstaller@2
+  inputs:
+    DefaultVersion: true
+
+- task: PowerPlatformExportSolution@2
+  inputs:
+    authenticationType: 'PowerPlatformSPN'
+    PowerPlatformSPN: 'EAP_PP_ADO_BUILD_DEV'
+    SolutionName: '$(SolutionName)'
+    SolutionOutputFile: '$(Build.StagingDirectory)\$(SolutionName)_Managed.zip'
+    Managed: true
+    AsyncOperation: true
+    MaxAsyncWaitTime: '60'
+
+- task: PowerPlatformUnpackSolution@2
+  inputs:
+    SolutionInputFile: '$(Build.StagingDirectory)\$(SolutionName)_Managed.zip'
+    SolutionTargetFolder: '$(Build.SourcesDirectory)\$(SolutionName)'
+    SolutionType: 'Managed'
+
+- task: PowerPlatformSetSolutionVersion@2
+  inputs:
+    authenticationType: 'PowerPlatformSPN'
+    PowerPlatformSPN: 'EAP_PP_ADO_BUILD_DEV'
+    SolutionName: '$(SolutionName)'
+    SolutionVersionNumber: '1.0.0.9'
+
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)\$(SolutionName)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'

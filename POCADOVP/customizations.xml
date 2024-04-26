@@ -1,0 +1,128 @@
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Entities></Entities>
+  <Roles></Roles>
+  <Workflows>
+    <Workflow WorkflowId="{c6bb7f7d-a951-404c-b4f1-55542e05b529}" Name="DisplayMessage">
+      <JsonFileName>/Workflows/DisplayMessage-C6BB7F7D-A951-404C-B4F1-55542E05B529.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>6</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <UIFlowType>2</UIFlowType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <Metadata>{"isvalid":true,"schemaVersion":"ROBIN_20211012","containsActiveConnections":false}</Metadata>
+      <Inputs>{"schema":null}</Inputs>
+      <Outputs>{"schema":null}</Outputs>
+      <Dependencies>{"childFlows":[],"workQueues":[]}</Dependencies>
+      <ConnectionReferences>[]</ConnectionReferences>
+      <Definition>"@@ConnectionString: ''\r\n@@Type: 'Local'\r\n@@DesktopType: 'local'\r\n@@DisplayName: 'Local computer'\r\nIMPORT 'controlRepo.appmask' AS appmask\r\nIMPORT 'imageRepo.imgrepo' AS imgrepo\r\n@SENSITIVE: []\r\nDISABLE CALL ReadConfigFile\r\nSystem.GetEnvironmentVariable.GetEnvironmentVariable Name: $'''USERNAME''' Value=&gt; USERNAME\r\nSET NewVar TO $'''Nikita'''\r\nDisplay.ShowMessageDialog.ShowMessage Title: $'''Greetings''' Message: $'''Welcome to Azure DevOps!! @ tes2\r\nTest 09/01/24\r\n\r\nSai Pulipaka\r\nTanmay\r\nRoshan Fuse\r\nAnkita Panaskar\r\n%NewVar%\r\nRavisha\r\nPrasad Hadole\r\nJayesh\r\nDhanashree\r\nAkshay \r\nNamrata\r\nShreyas\r\nAkash Shinde\r\nAbhishek Sutradhar''' Icon: Display.Icon.Information Buttons: Display.Buttons.OK DefaultButton: Display.DefaultButton.Button1 IsTopMost: True ButtonPressed=&gt; ButtonPressed\r\nOutlook.Launch Instance=&gt; OutlookInstance\r\nOutlook.SendEmailThroughOutlook.SendEmail Instance: OutlookInstance Account: $'''%USERNAME%@Hanover.com''' SendTo: $'''prjadhav@hanover.com;VParkhi@hanover.com;NDhumal@hanover.com;Rfuse@hanover.com;Ksonone@Hanover.com;RRandhe@hanover.com;VBhalerao@hanover.com;apanaskar@hanover.com''' Subject: $'''ADO Pipeline Demo''' Body: $'''&lt;p&gt;Hello Team,&lt;br&gt;Welcome to Hanover Ensurance.&lt;br&gt;Regards,&lt;br&gt;EAP_TestBOT_03&lt;br&gt;ABC&lt;br&gt;Tes file\r\n&lt;br&gt;\r\nRavisha&lt;br&gt;\r\nThank you&lt;br&gt;\r\nPrasad''' IsBodyHtml: True\r\nOutlook.Close Instance: OutlookInstance\r\nFUNCTION ReadConfigFile GLOBAL\r\n    XML.ReadFromFile File: $'''C:\\\\Users\\\\Public\\\\Documents\\\\config.xml''' Encoding: XML.FileEncoding.DefaultEncoding XmlDocument=&gt; XmlDocument\r\n    XML.GetXmlElementValue.GetElementValue Document: XmlDocument XPathQuery: $'''configAttributes/emailTo''' TextValue=&gt; XmlEmailTo\r\n    XML.GetXmlElementValue.GetElementValue Document: XmlDocument XPathQuery: $'''configAttributes/emailFrom''' TextValue=&gt; XmlEmailFrom\r\nEND FUNCTION\r\n"</Definition>
+      <SchemaVersion>2022.06</SchemaVersion>
+      <DesktopFlowModules>[]</DesktopFlowModules>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="DisplayMessage" />
+      </LocalizedNames>
+    </Workflow>
+    <Workflow WorkflowId="{8a9554d6-2b38-ee11-bdf4-000d3a3704ff}" Name="DisplayMessageP">
+      <JsonFileName>/Workflows/DisplayMessageP-8A9554D6-2B38-EE11-BDF4-000D3A3704FF.json</JsonFileName>
+      <Type>1</Type>
+      <Subprocess>0</Subprocess>
+      <Category>5</Category>
+      <Mode>0</Mode>
+      <Scope>4</Scope>
+      <OnDemand>0</OnDemand>
+      <TriggerOnCreate>0</TriggerOnCreate>
+      <TriggerOnDelete>0</TriggerOnDelete>
+      <AsyncAutodelete>0</AsyncAutodelete>
+      <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+      <StateCode>1</StateCode>
+      <StatusCode>2</StatusCode>
+      <RunAs>1</RunAs>
+      <IsTransacted>1</IsTransacted>
+      <IntroducedVersion>1.0.0.0</IntroducedVersion>
+      <IsCustomizable>1</IsCustomizable>
+      <BusinessProcessType>0</BusinessProcessType>
+      <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+      <BillingContext>[{"id":"new_adovp_e1d58","type":"UnifiedApp","metadata":{"displayName":"ADO-VP"}}]</BillingContext>
+      <PrimaryEntity>none</PrimaryEntity>
+      <LocalizedNames>
+        <LocalizedName languagecode="1033" description="DisplayMessageP" />
+      </LocalizedNames>
+    </Workflow>
+  </Workflows>
+  <FieldSecurityProfiles></FieldSecurityProfiles>
+  <Templates />
+  <EntityMaps />
+  <EntityRelationships />
+  <OrganizationSettings />
+  <optionsets />
+  <CustomControls />
+  <EntityDataProviders />
+  <CanvasApps>
+    <CanvasApp>
+      <Name>new_adovp_e1d58</Name>
+      <AppVersion>2024-03-12T12:47:32Z</AppVersion>
+      <Status>Ready</Status>
+      <CreatedByClientVersion>3.24024.12.0</CreatedByClientVersion>
+      <MinClientVersion>3.24024.12.0</MinClientVersion>
+      <Tags>{"primaryDeviceWidth":"1366","primaryDeviceHeight":"768","supportsPortrait":"true","supportsLandscape":"true","primaryFormFactor":"Tablet","showStatusBar":"false","publisherVersion":"3.24024.12","minimumRequiredApiVersion":"2.2.0","hasComponent":"false","hasUnlockedComponent":"false","isUnifiedRootApp":"false","sienaVersion":"20240311T125125Z-3.24023.14.0","offlineLargeFilesSupport":"false"}</Tags>
+      <IsCdsUpgraded>0</IsCdsUpgraded>
+      <GalleryItemId xsi:nil="true"></GalleryItemId>
+      <BackgroundColor>RGBA(0,176,240,1)</BackgroundColor>
+      <DisplayName>ADO-VP</DisplayName>
+      <Description xsi:nil="true"></Description>
+      <CommitMessage xsi:nil="true"></CommitMessage>
+      <Publisher xsi:nil="true"></Publisher>
+      <AuthorizationReferences>[]</AuthorizationReferences>
+      <ConnectionReferences>{"7b93dd9f-04f4-40b3-aa52-7c9cd0eecef4":{"id":"/providers/microsoft.powerapps/apis/shared_logicflows","displayName":"Logic flows","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1664/1.0.1664.3477/logicflows/icon.png","dataSources":["DisplayMessageP"],"dependencies":["9c3a734d-0db2-4143-9003-eb23253beea0"],"dependents":[],"parameterHints":{"9c3a734d-0db2-4143-9003-eb23253beea0":{"value":"shared_uiflow_1"},"workflowEntityId":{"value":"8a9554d6-2b38-ee11-bdf4-000d3a3704ff"},"workflowName":{"value":"8650be61-fc08-4234-980d-c0ce8c5801d3"}},"parameterHintsV2":{"shared_uiflow_1":{"value":"9c3a734d-0db2-4143-9003-eb23253beea0"},"workflowEntityId":{"value":"8a9554d6-2b38-ee11-bdf4-000d3a3704ff"},"workflowName":{"value":"8650be61-fc08-4234-980d-c0ce8c5801d3"}},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Standard","actions":["Run"]},"9c3a734d-0db2-4143-9003-eb23253beea0":{"id":"/providers/microsoft.powerapps/apis/shared_uiflow","displayName":"Desktop flows","iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1680/1.0.1680.3652/uiflow/icon.png","dataSources":[],"dependencies":[],"dependents":["7b93dd9f-04f4-40b3-aa52-7c9cd0eecef4"],"parameterHints":{},"parameterHintsV2":{},"isOnPremiseConnection":false,"bypassConsent":false,"dataSets":{},"apiTier":"Premium","authenticationType":"azureRelay"},"84cf8503-e813-4bc8-bb23-b7b593ac6960":{"id":"/providers/microsoft.powerapps/apis/shared_sql","xrmConnectionReferenceLogicalName":"new_sharedsql_a8be9","displayName":"SQL Server","executionRestrictions":{"version":1,"modifiedOn":"2024-03-12 12:47:29","appVer":"3.24024.12","apiId":"/providers/microsoft.powerapps/apis/shared_sql","apiVer":2,"policy":"{\"type\":\"tabular\",\"dataSources\":{\"[adopilot].[emp]\":[\"post\",\"patch\",\"get\"]}}"},"iconUri":"https://connectoricons-prod.azureedge.net/releases/v1.0.1680/1.0.1680.3652/sql/icon.png","dataSources":["ADOPilot.emp"],"dependencies":[],"dependents":[],"parameterHints":{},"parameterHintsV2":{},"gatewayObjectIdHint":"1c96d5d0-47bc-42a7-b70b-2b9996cb35ae","isOnPremiseConnection":true,"sharedConnectionId":"3b5c4057-0e6e-4c0e-b21f-45435dc517cd","bypassConsent":false,"dataSets":{"enterpriseautomationsqlserver-dev.database.windows.net,PowerPlatform":{"dataSources":{"ADOPilot.emp":{"tableName":"[ADOPilot].[emp]"}}}},"apiTier":"Premium","actions":["providers/PowerPlatform.Governance/Operations/Read","providers/PowerPlatform.Governance/Operations/Write"],"endpoints":["enterpriseautomationsqlserver-dev.database.windows.net,PowerPlatform"],"authenticationType":"sqlAuthentication"}}</ConnectionReferences>
+      <DatabaseReferences>{}</DatabaseReferences>
+      <AppComponents>[]</AppComponents>
+      <AppComponentDependencies>[]</AppComponentDependencies>
+      <CanConsumeAppPass>1</CanConsumeAppPass>
+      <CanvasAppType>0</CanvasAppType>
+      <BypassConsent>0</BypassConsent>
+      <AdminControlBypassConsent>0</AdminControlBypassConsent>
+      <EmbeddedApp xsi:nil="true"></EmbeddedApp>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <CdsDependencies>{"cdsdependencies":[{"dependencyid":"8a9554d6-2b38-ee11-bdf4-000d3a3704ff","componenttype":29,"componenttypeplatformname":"Workflow"},{"logicalname":"new_sharedsql_a8be9","componenttype":10049,"componenttypeplatformname":"ConnectionReference"}]}</CdsDependencies>
+      <IsCustomizable>1</IsCustomizable>
+      <BackgroundImageUri>/CanvasApps/new_adovp_e1d58_BackgroundImageUri</BackgroundImageUri>
+      <DocumentUri>/CanvasApps/new_adovp_e1d58_DocumentUri.msapp</DocumentUri>
+      <AdditionalUris>
+        <AdditionalUri>/CanvasApps/new_adovp_e1d58_AdditionalUris0_identity.json</AdditionalUri>
+      </AdditionalUris>
+    </CanvasApp>
+  </CanvasApps>
+  <connectionreferences>
+    <connectionreference connectionreferencelogicalname="new_sharedsql_a8be9">
+      <connectionreferencedisplayname>SQL Server PilotPOC-a8be9</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_sql</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+    <connectionreference connectionreferencelogicalname="new_shareduiflow_49533">
+      <connectionreferencedisplayname>Desktop flows POCADOVP-49533</connectionreferencedisplayname>
+      <connectorid>/providers/Microsoft.PowerApps/apis/shared_uiflow</connectorid>
+      <iscustomizable>1</iscustomizable>
+      <statecode>0</statecode>
+      <statuscode>1</statuscode>
+    </connectionreference>
+  </connectionreferences>
+  <Languages>
+    <Language>1033</Language>
+  </Languages>
+</ImportExportXml>
